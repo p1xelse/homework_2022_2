@@ -1,7 +1,13 @@
 'use strict';
-
-function zip(...args)
-{
+/**
+ * Функция, рисующая квадратную ASCII шахматную доску
+ * @param {object} args - объекты
+ * @returns {object} | {}
+ * @throws исключение в случае отсутствия аргумента
+ * @example
+ * zip({1: 1}, {2:2}) return {1:1, 2:2}
+ */ 
+const zip = (...args) => {
     if (args.length == 0) {
         throw new Error("No args")
     }
