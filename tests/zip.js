@@ -72,6 +72,7 @@ QUnit.module('Тестируем функцию zip', function () {
 			name: 'age',
 			value: 42
 		};
+		
 		assert.deepEqual(zip({name: 'age'}, {value: 42}, {name: 'cost'}, {value: -6}), obj);
 	});
 
@@ -82,11 +83,13 @@ QUnit.module('Тестируем функцию zip', function () {
 
 	});
 
-	function _zip_err() {
-		zip();
-	}
-
 	QUnit.test('Функция бросает исключение, если нет аргументов', function (assert) {
-		assert.throws(_zip_err)
+		assert.throws(() => {zip()})
+	});
+
+	QUnit.test('Функция бросает исключение, если хотя бы один из аргументов не объект', function (assert) {
+		assert.throws(() => {zip({}, 1)})
+		assert.throws(() => {zip(1)})
+		assert.throws(() => {zip({1:2}, {1:3}, "str")}, TypeError)
 	});
 });
