@@ -26,7 +26,7 @@ const zip = (...args) => {
             if (!(key in _accumulator))
             _accumulator[key] = curValue[key];
             
-                return _accumulator
-        }, accumulator)
+                return _accumulator;
+        }, accumulator);
     }, {})
 }
