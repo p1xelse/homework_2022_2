@@ -84,12 +84,20 @@ QUnit.module('Тестируем функцию zip', function () {
 	});
 
 	QUnit.test('Функция бросает исключение, если нет аргументов', function (assert) {
-		assert.throws(() => {zip()})
+		let errNoArgs = Error("No args")
+		
+		assert.throws(() => {zip()}, errNoArgs)
 	});
 
 	QUnit.test('Функция бросает исключение, если хотя бы один из аргументов не объект', function (assert) {
-		assert.throws(() => {zip({}, 1)}, TypeError)
-		assert.throws(() => {zip(1)}, TypeError)
-		assert.throws(() => {zip({1:2}, {1:3}, "str")}, TypeError)
+		let errNoObject = TypeError("One of the args is no object")
+
+		assert.throws(() => {zip({}, 1)}, errNoObject)
+		assert.throws(() => {zip(1)}, errNoObject)
+		assert.throws(() => {zip({1:2}, {1:3}, "str")}, errNoObject)
+		
+		let errNull = TypeError("One of the args is null")
+
+		assert.throws(() => {zip({}, null)}, errNull)
 	});
 });
