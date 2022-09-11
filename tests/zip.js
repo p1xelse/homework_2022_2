@@ -1,7 +1,5 @@
 'use strict';
 
-'use strict';
-
 QUnit.module('Тестируем функцию zip', function () {
 	QUnit.test('Функция работает с единственным объектом', function (assert) {
 		assert.deepEqual(zip({}), {});
@@ -78,8 +76,8 @@ QUnit.module('Тестируем функцию zip', function () {
 	});
 
 	QUnit.test('Функция правильно работает с одинаковыми объектами', function (assert) {
-		assert.deepEqual(zip({ answer: 42 }, { answer: 42 }), { answer: 42 });
-		assert.deepEqual(zip({ age: 5 }, {}, { age: 5 }, { age: 5 }), { age: 5 });
+		assert.deepEqual(zip({answer: 42}, {answer: 42}), {answer: 42});
+		assert.deepEqual(zip({age: 5}, {}, {age: 5}, {age: 5}), {age: 5});
 		assert.deepEqual(zip({}, {}, {}), {});
 
 	});
@@ -87,15 +85,15 @@ QUnit.module('Тестируем функцию zip', function () {
 	QUnit.test('Функция бросает исключение, если нет аргументов', function (assert) {
 		let errNoArgs = Error("No args");
 
-		assert.throws(() => { zip() }, errNoArgs);
+		assert.throws(() => {zip()}, errNoArgs);
 	});
 
 	QUnit.test('Функция бросает исключение, если хотя бы один из аргументов не объект', function (assert) {
 		let errNoObject = TypeError("One of the args is no object");
 
-		assert.throws(() => { zip({}, 1) }, errNoObject);
-		assert.throws(() => { zip(1) }, errNoObject);
-		assert.throws(() => { zip({ 1: 2 }, { 1: 3 }, "str") }, errNoObject);
-		assert.throws(() => { zip({}, null) }, errNoObject);
+		assert.throws(() => {zip({}, 1)}, errNoObject);
+		assert.throws(() => {zip(1)}, errNoObject);
+		assert.throws(() => {zip({1: 2}, {1: 3}, "str")}, errNoObject);
+		assert.throws(() => {zip({}, null)}, errNoObject);
 	});
 });
