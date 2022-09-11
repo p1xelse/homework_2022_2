@@ -15,18 +15,16 @@ const zip = (...args) => {
     }
 
     return args.reduce((accumulator, curValue) => {
-        if (curValue === null) {
-            throw new TypeError("One of the args is null");
-        }
-        if (typeof curValue !== "object") {
+        if (typeof curValue !== "object" || curValue === null) {
             throw new TypeError("One of the args is no object");
         }
 
-        return Object.keys(curValue).reduce((_accumulator, key) => {
-            if (!(key in _accumulator))
-            _accumulator[key] = curValue[key];
-            
-                return _accumulator;
-        }, accumulator);
+        Object.keys(curValue).forEach((key) => {
+            if (!(key in accumulator)) {
+                accumulator[key] = curValue[key];
+            }
+        })
+
+        return accumulator;
     }, {})
 }
