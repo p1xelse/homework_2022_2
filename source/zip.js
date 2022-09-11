@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 /**
  * Функция, объединяющая ключи из объектов в один объект
  * @param {...Object} args - объекты
@@ -23,8 +23,8 @@ const zip = (...args) => {
             if (!(key in accumulator)) {
                 accumulator[key] = curValue[key];
             }
-        })
+        });
 
         return accumulator;
-    }, {})
-}
+    }, {});
+};
