@@ -15,7 +15,12 @@ const zip = (...args) => {
     }
 
     return args.reduce((accumulator, curValue) => {
-        if (typeof curValue !== "object" || curValue === null) {
+        if (
+            Array.isArray(curValue) ||
+            typeof curValue !== "object" ||
+            typeof curValue === "object" && !curValue ||
+            Object.getPrototypeOf(curValue) !== Object.prototype
+        ) {
             throw new TypeError("One of the args is no object");
         }
 
