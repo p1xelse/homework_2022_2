@@ -1,0 +1,22 @@
+{
+  "name": "sample_lec_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "DEBUG=server node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/p1xelse/homework_2022_2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/p1xelse/homework_2022_2/issues"
+  },
+  "homepage": "https://github.com/p1xelse/homework_2022_2#readme",
+  "dependencies": {
+    "debug": "^4.3.4 "
+  }
+}
